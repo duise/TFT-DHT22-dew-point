@@ -114,18 +114,25 @@ void loop(void) {
   float kt1 = t1 * 1.0245;
   float kh1 = h1 * 0.95;
   float kh2 = h2 * 0.95;
+
+  //build string from text + value
+  String S1 = "1: ";
+  String B = " ";
+  String S2 = "2: ";
+  String all1 = S1 + kt1 + B + kh1;
+  String all2 = S2 + t2 + B + kh2;
+  
   //tft stuff from original sketch
   tft.fillScreen(BLACK);
   unsigned long start = micros();
   tft.setCursor(0, 0);
+  
   tft.setTextColor(WHITE);  tft.setTextSize(2);
-  tft.println("T1 "(kt1)"H1 "(kh1));
+  tft.println("   Temp.  Hum.  DP");
   tft.println();
+  tft.println(all1);
   tft.println();
-  tft.println("Kinderzimmer");
-  tft.println("Temperatur:");
-  tft.println(t2);
-  tft.println("Luftfeuchte:");
-  tft.println(kh2);
+  tft.println(all2);
+  
   delay(5000);
 }
