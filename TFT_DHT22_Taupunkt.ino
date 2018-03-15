@@ -137,7 +137,16 @@ void loop(void) {
   unsigned long start = micros();
   tft.setCursor(0, 0);
   
-  tft.setTextColor(WHITE);  tft.setTextSize(2);
+  tft.setTextSize(2);
+  if (kt1 - dp1 > 1) 
+  {
+    tft.setTextColor(WHITE);
+  }
+  else
+  {
+    tft.setTextColor(RED);
+  }
+  
   tft.println("   Temp.  Hum. DP");
   tft.println("-------------------");
   tft.println();
