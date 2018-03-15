@@ -113,22 +113,33 @@ void loop(void) {
   //reducing delta of sensors by correction of lower value. 
   float kt1 = t1 * 1.0245;
   float kh1 = h1 * 0.95;
-  float kh2 = h2 * 0.95;
+  float kh2 = h2 * 1.0;
+
+  //calculate dew point
+  float sdd1 = 6.1078 * pow(10, (7.5 * kt1) / (237.3 + kt1));
+  float sdd2 = 6.1078 * pow(10, (7.5 * t2) / (237.3 + t2));
+  float dd1 = kh1 / 100 * sdd1;
+  float dd2 = kh2 / 100 * sdd2;
+  float v1 = log10(dd1 / 6.1078);
+  float v2 = log10(dd2 / 6.1078);
+  float dp1 = 237.3 * v1 / (7.5 - v1);
+  float dp2 = 237.3 * v2 / (7.5 - v2);
 
   //build string from text + value
-  String S1 = "1: ";
+  String S1 = "S1  ";
   String B = " ";
-  String S2 = "2: ";
-  String all1 = S1 + kt1 + B + kh1;
-  String all2 = S2 + t2 + B + kh2;
-  
+  String S2 = "S2  ";
+  String all1 = S1 + round(kt1) + "C   " + round(kh1) + "%  " + round(dp1) + "C";
+  String all2 = S2 + round(t2) + "C   " + round(kh2) + "%  " + round(dp2) + "C";
+
   //tft stuff from original sketch
   tft.fillScreen(BLACK);
   unsigned long start = micros();
   tft.setCursor(0, 0);
   
   tft.setTextColor(WHITE);  tft.setTextSize(2);
-  tft.println("   Temp.  Hum.  DP");
+  tft.println("   Temp.  Hum. DP");
+  tft.println("-------------------");
   tft.println();
   tft.println(all1);
   tft.println();
