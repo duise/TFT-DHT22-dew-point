@@ -118,13 +118,8 @@ void loop(void) {
   tft.fillScreen(BLACK);
   unsigned long start = micros();
   tft.setCursor(0, 0);
-  
   tft.setTextColor(WHITE);  tft.setTextSize(2);
-  tft.println("Schlafzimmer");
-  tft.println("Temperatur:");
-  tft.println(kt1);
-  tft.println("Luftfeuchte:");
-  tft.println(kh1);
+  tft.println("T1 "(kt1)"H1 "(kh1));
   tft.println();
   tft.println();
   tft.println("Kinderzimmer");
