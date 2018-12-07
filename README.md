@@ -1,6 +1,6 @@
 # TFT-DHT22-dew-point
-using arduino mega with dht22 for temperature and humidity and 2,6" TFT shield. Calculate dew point.
-master has no dew point. try to implement code for calculation of dp based on https://www.wetterochs.de/wetter/feuchte.html
+arduino mega und 2,6" tft shield. Temeperatur und Luftfeuchte mit dht22. Taupunktberechnung.
+Taupunkt hier geklaut https://www.wetterochs.de/wetter/feuchte.html
 
 Bezeichnungen:
 r = relative Luftfeuchte
